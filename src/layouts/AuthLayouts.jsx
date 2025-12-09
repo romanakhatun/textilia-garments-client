@@ -1,6 +1,6 @@
-// import AuthImg from "../assets/authImage.png";
 import { Outlet } from "react-router";
 import SocialLogin from "../pages/auth/SocialLogin";
+import Logo from "../components/Logo";
 
 const AuthLayouts = () => {
   return (
@@ -10,8 +10,7 @@ const AuthLayouts = () => {
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="p-8 lg:p-16 flex flex-col justify-center">
               <div className="mb-8">
-                {/* <Logo logoColor="text-base-content" /> */}
-                Logo
+                <Logo />
               </div>
 
               <Outlet />

@@ -51,7 +51,7 @@ const itemVariants = {
 };
 
 const TestimonialCard = ({ quote, name, title, avatar, rating }) => (
-  <div className="p-6 h-full flex flex-col justify-between rounded-xl bg-base-100 shadow-xl border border-base-300/50">
+  <div className="p-6 h-full flex flex-col justify-between rounded-xl bg-base-100 border border-base-300/50">
     <div className="flex text-accent text-lg mb-4">
       {[...Array(rating)].map((_, i) => (
         <FaStar key={i} />

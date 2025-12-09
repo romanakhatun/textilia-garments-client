@@ -23,7 +23,7 @@ const Footer = () => {
     <footer className="bg-base-200 text-base-content pt-16 border-t border-base-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* --- Main Grid Section --- */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12">
           {/* Logo & Description */}
           <div className="md:col-span-1">
             <Logo />
