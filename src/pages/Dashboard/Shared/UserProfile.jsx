@@ -3,10 +3,10 @@ import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import useRole from "../../../hooks/useRole";
 import LoadingSpinner from "../../../components/LoadingSpinner";
-const UserProfile = ({ dashboardRole }) => {
+const UserProfile = () => {
   const { user, updateUserProfile } = useAuth();
   const { data: userData, roleLoading } = useRole();
-  console.log(userData);
+  console.log("user data", userData);
 
   const {
     register,
@@ -55,8 +55,10 @@ const UserProfile = ({ dashboardRole }) => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 md:p-10 bg-base-100 rounded-xl shadow-xl my-10">
-      <h1 className="text-3xl font-arsenal font-extrabold mb-4">My Profile</h1>
-      <p className="mb-6 text-base-content/70 font-nunito">
+      <h1 className="text-3xl font-arsenal font-extrabold mb-4 capitalize">
+        {userData?.role || "My"} Profile
+      </h1>
+      <p className="mb-6 text-base-content/70">
         Manage your account details and status.
       </p>
 
@@ -71,13 +73,11 @@ const UserProfile = ({ dashboardRole }) => {
           <h2 className="mt-4 text-xl font-arsenal font-semibold">
             {user?.displayName}
           </h2>
-          <p className="text-sm text-base-content/60 font-nunito">
-            {user?.email}
-          </p>
+          <p className="text-sm text-base-content/60">{user?.email}</p>
 
           {/* Role Badge */}
-          <div className="mt-3 badge badge-primary badge-outline text-lg font-bold">
-            Role: {dashboardRole}
+          <div className="mt-3 badge badge-primary badge-outline text-lg font-bold capitalize">
+            Role: {userData?.role}
           </div>
 
           {/* Status & Suspend Feedback */}
@@ -89,7 +89,7 @@ const UserProfile = ({ dashboardRole }) => {
                   : userData.status === "suspended"
                   ? "badge-error"
                   : "badge-warning"
-              } text-white font-bold`}
+              } text-white font-bold capitalize`}
             >
               Status: {userData.status || "pending"}
             </span>
@@ -97,7 +97,7 @@ const UserProfile = ({ dashboardRole }) => {
             {userData.suspendReason && (
               <div className="mt-3 p-3 bg-error/10 text-error text-sm rounded-lg border border-error">
                 <p className="font-bold">Suspension Reason:</p>
-                <p className="font-nunito">{userData.suspendReason}</p>
+                <p className="capitalize">{userData.suspendReason}</p>
               </div>
             )}
           </div>

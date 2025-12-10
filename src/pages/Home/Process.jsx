@@ -108,7 +108,7 @@ const Process = () => {
 
           <motion.p
             variants={itemVariants}
-            className="text-base text-base-content/80 font-nunito leading-relaxed mb-10"
+            className="text-base text-base-content/80 leading-relaxed mb-10"
           >
             From initial consultation, our process ensures seamless integration,
             efficiency, and full transparency at every key production stage.

@@ -5,21 +5,20 @@ import AuthLayouts from "../layouts/AuthLayouts";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import About from "../pages/About";
-import ProtectedRoute from "../components/ProtectedRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
 import NotFound from "../pages/NotFound";
-import BuyerProfile from "../pages/Dashboard/Buyer/BuyerProfile";
 import TrackOrder from "../pages/Dashboard/Buyer/TrackOrder";
 import BuyerOrders from "../pages/Dashboard/Buyer/BuyerOrders";
 import ManageProducts from "../pages/Dashboard/Manager/ManageProducts";
 import PendingOrders from "../pages/Dashboard/Manager/PendingOrders";
 import ApprovedOrders from "../pages/Dashboard/Manager/ApprovedOrders";
-import ManagerProfile from "../pages/Dashboard/Manager/ManagerProfile";
 import AllOrdersAdmin from "../pages/Dashboard/Admin/AllOrdersAdmin";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import AllProductsAdmin from "../pages/Dashboard/Admin/AllProductsAdmin";
 import AddProduct from "../pages/Dashboard/Manager/AddProduct";
-import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
+import ProtectedRoute from "./ProtectedRoute";
+import UserProfile from "../pages/Dashboard/Shared/UserProfile";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   // == PUBLIC WEBSITE ROUTES
@@ -58,20 +57,41 @@ export const router = createBrowserRouter([
       // ---- BUYER ROUTES
       { path: "my-orders", element: <BuyerOrders /> },
       { path: "track-order/:orderId", element: <TrackOrder /> },
-      { path: "profile", element: <BuyerProfile /> },
+      { path: "profile", element: <UserProfile /> },
 
       // ---- MANAGER ROUTES
       { path: "add-product", element: <AddProduct /> },
       { path: "manage-products", element: <ManageProducts /> },
       { path: "pending-orders", element: <PendingOrders /> },
       { path: "approved-orders", element: <ApprovedOrders /> },
-      { path: "profile", element: <ManagerProfile /> },
+      { path: "profile", element: <UserProfile /> },
 
       // ---- ADMIN ROUTES
-      { path: "manage-users", element: <ManageUsers /> },
-      { path: "all-products", element: <AllProductsAdmin /> },
-      { path: "all-orders", element: <AllOrdersAdmin /> },
-      { path: "profile", element: <AdminProfile /> },
+      {
+        path: "manage-users",
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "all-products",
+        element: (
+          <AdminRoute>
+            <AllProductsAdmin />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "all-orders",
+        element: (
+          <AdminRoute>
+            <AllOrdersAdmin />
+          </AdminRoute>
+        ),
+      },
+      { path: "profile", element: <UserProfile /> },
     ],
   },
   // ==== 404 Not Found
