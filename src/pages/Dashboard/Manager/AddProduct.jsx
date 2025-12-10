@@ -2,9 +2,11 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useRole from "../../../hooks/useRole";
 
 const AddProduct = () => {
   const { user } = useAuth();
+  const { role, status } = useRole();
   const axiosSecure = useAxiosSecure();
 
   // Include formState to access validation errors
@@ -41,6 +43,14 @@ const AddProduct = () => {
       }
     });
   };
+
+  if (role !== "manager" || status === "suspended") {
+    return (
+      <p className="text-red-500 text-xl font-semibold">
+        You cannot add products because your account is suspended.
+      </p>
+    );
+  }
 
   return (
     <div className="max-w-5xl mx-auto bg-base-100 p-10 rounded-2xl shadow my-20">
