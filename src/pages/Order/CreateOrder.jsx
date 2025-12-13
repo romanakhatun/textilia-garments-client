@@ -23,7 +23,6 @@ const CreateOrder = () => {
     enabled: !!productId,
   });
 
-  // react-hook-form
   const {
     register,
     handleSubmit,

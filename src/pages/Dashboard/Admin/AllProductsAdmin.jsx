@@ -77,9 +77,6 @@ const AllProductsAdmin = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <Link to="/dashboard/add-product" className="btn btn-primary">
-            Add Product
-          </Link>
         </div>
       </div>
 
@@ -111,9 +108,6 @@ const AllProductsAdmin = () => {
                     />
                     <div>
                       <div className="font-semibold">{p.name}</div>
-                      <div className="text-sm text-base-content/60">
-                        {p.description?.slice(0, 80)}
-                      </div>
                     </div>
                   </div>
                 </td>
@@ -136,13 +130,15 @@ const AllProductsAdmin = () => {
                   </label>
                 </td>
 
-                <td className="flex gap-2">
-                  <Link
-                    to={`/dashboard/edit-product/${p._id}`}
-                    className="btn btn-sm btn-info text-white"
-                  >
-                    Edit
-                  </Link>
+                <td className="flex gap-2 self-center">
+                  <div>
+                    <Link
+                      to={`/dashboard/edit-product/${p._id}`}
+                      className="btn btn-sm btn-info text-white"
+                    >
+                      Edit
+                    </Link>
+                  </div>
                   <button
                     onClick={() => handleDelete(p)}
                     className="btn btn-sm btn-error text-white"

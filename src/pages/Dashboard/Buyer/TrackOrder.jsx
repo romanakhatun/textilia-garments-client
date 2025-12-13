@@ -13,20 +13,18 @@ const TrackOrder = () => {
   });
 
   const { data: logs = [], isLoading: loadingLogs } = useQuery({
-    queryKey: ["tracking", order?.trackingId],
-    enabled: !!order?.trackingId,
-    queryFn: async () =>
-      (await axiosSecure.get(`/tracking/${order.trackingId}`)).data,
+    queryKey: ["tracking", order?._id],
+    queryFn: async () => (await axiosSecure.get(`/tracking/${order._id}`)).data,
   });
+
+  console.log(logs);
 
   if (loadingOrder || loadingLogs)
     return <LoadingSpinner message="Loading..." />;
 
   return (
     <div className="max-w-5xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">
-        Track Order: {order.trackingId}
-      </h1>
+      <h1 className="text-2xl font-bold mb-4">Track Order: {order._id}</h1>
       <p className="mb-6">Product: {order.productName}</p>
 
       <div className="timeline space-y-6">

@@ -23,6 +23,8 @@ import Products from "../pages/Products/Products";
 import ProductsDetails from "../pages/Products/ProductsDetails";
 import Contact from "../pages/Contact";
 import CreateOrder from "../pages/Order/CreateOrder";
+import ManagerRoute from "./ManagerRoute";
+import Dashboard from "../pages/Dashboard/Dashboard";
 
 export const router = createBrowserRouter([
   // == PUBLIC WEBSITE ROUTES
@@ -82,16 +84,45 @@ export const router = createBrowserRouter([
       </ProtectedRoute>
     ),
     children: [
+      { path: "dashboard", element: <Dashboard /> },
       // ---- BUYER ROUTES
       { path: "my-orders", element: <BuyerOrders /> },
       { path: "track-order/:orderId", element: <TrackOrder /> },
       { path: "profile", element: <UserProfile /> },
 
       // ---- MANAGER ROUTES
-      { path: "add-product", element: <AddProduct /> },
-      { path: "manage-products", element: <ManageProducts /> },
-      { path: "pending-orders", element: <PendingOrders /> },
-      { path: "approved-orders", element: <ApprovedOrders /> },
+      {
+        path: "add-product",
+        element: (
+          <ManagerRoute>
+            <AddProduct />
+          </ManagerRoute>
+        ),
+      },
+      {
+        path: "manage-products",
+        element: (
+          <ManagerRoute>
+            <ManageProducts />
+          </ManagerRoute>
+        ),
+      },
+      {
+        path: "pending-orders",
+        element: (
+          <ManagerRoute>
+            <PendingOrders />
+          </ManagerRoute>
+        ),
+      },
+      {
+        path: "approved-orders",
+        element: (
+          <ManagerRoute>
+            <ApprovedOrders />
+          </ManagerRoute>
+        ),
+      },
       { path: "profile", element: <UserProfile /> },
 
       // ---- ADMIN ROUTES

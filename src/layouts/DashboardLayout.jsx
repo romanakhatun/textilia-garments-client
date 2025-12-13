@@ -80,11 +80,6 @@ const DashboardLayout = () => {
       icon: <FaClipboardList size={22} />,
     },
     {
-      name: "Track Order",
-      path: "track-order",
-      icon: <MdPendingActions size={22} />,
-    },
-    {
       name: "Buyer Profile",
       path: "profile",
       icon: <FaUserCircle size={22} />,
