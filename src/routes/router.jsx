@@ -28,6 +28,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import Payment from "../pages/Order/PaymentOrder";
 import PaymentSuccess from "../pages/Order/PaymentSuccess";
 import PaymentCancelled from "../pages/Order/PaymentCancelled";
+import EditProduct from "../pages/Dashboard/Shared/EditProduct";
 
 export const router = createBrowserRouter([
   // == PUBLIC WEBSITE ROUTES
@@ -112,6 +113,8 @@ export const router = createBrowserRouter([
     ),
     children: [
       { path: "dashboard", element: <Dashboard /> },
+      { path: "edit-product/:id", element: <EditProduct /> },
+
       // ---- BUYER ROUTES
       { path: "my-orders", element: <BuyerOrders /> },
       { path: "track-order/:orderId", element: <TrackOrder /> },

@@ -93,7 +93,6 @@ const AllOrdersAdmin = () => {
 
     if (!formValues) return;
 
-    // Backend: POST /tracking/:trackingId
     const payload = {
       status: formValues.status,
       location: formValues.location,
@@ -105,6 +104,7 @@ const AllOrdersAdmin = () => {
       `/tracking/${order.trackingId}`,
       payload
     );
+
     if (res.data.insertedId || res.status === 200 || res.status === 201) {
       Swal.fire("Added", "Tracking update added", "success");
       refetch();

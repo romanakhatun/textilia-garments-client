@@ -17,7 +17,7 @@ const TrackOrder = () => {
     queryFn: async () => (await axiosSecure.get(`/tracking/${order._id}`)).data,
   });
 
-  console.log(logs);
+  console.log("logs", logs, "order", "order");
 
   if (loadingOrder || loadingLogs)
     return <LoadingSpinner message="Loading..." />;

@@ -19,6 +19,7 @@ const AllProductsAdmin = () => {
       return res.data;
     },
   });
+  // console.log(products);
 
   const handleDelete = async (product) => {
     const confirm = await Swal.fire({
@@ -108,6 +109,7 @@ const AllProductsAdmin = () => {
                     />
                     <div>
                       <div className="font-semibold">{p.name}</div>
+                      <div>{p.createdBy}</div>
                     </div>
                   </div>
                 </td>
