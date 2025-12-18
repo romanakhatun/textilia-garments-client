@@ -24,7 +24,6 @@ import ProductsDetails from "../pages/Products/ProductsDetails";
 import Contact from "../pages/Contact";
 import CreateOrder from "../pages/Order/CreateOrder";
 import ManagerRoute from "./ManagerRoute";
-import Dashboard from "../pages/Dashboard/Dashboard";
 import Payment from "../pages/Order/PaymentOrder";
 import PaymentSuccess from "../pages/Order/PaymentSuccess";
 import PaymentCancelled from "../pages/Order/PaymentCancelled";
