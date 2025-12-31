@@ -244,7 +244,7 @@ SITE_DOMAIN=http://localhost:5173
 
 ```bash
 cd textila-server
-npm run dev
+nodemon index.js
 ```
 
 #### Start the Frontend Client
