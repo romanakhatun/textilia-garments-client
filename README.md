@@ -29,6 +29,10 @@ This project was built as part of an **assignment to demonstrate full-stack deve
 
 ---
 
+## Screenshot
+
+![Textila Screenshot](./textilia.png)
+
 ## Key Features
 
 ### Authentication & Security
@@ -171,3 +175,94 @@ This project was built as part of an **assignment to demonstrate full-stack deve
 - dotenv
 
 ---
+
+## ⚙️ How to Run the Project Locally
+
+Follow the steps below to run the **Textila** project on your local machine.
+
+---
+
+### Prerequisites
+Make sure you have the following installed on your system:
+
+- Node.js (v18 or later recommended)
+- npm or yarn
+- MongoDB (local or MongoDB Atlas)
+- Git
+
+---
+
+### Step 1: Clone the Repositories
+
+```bash
+git clone https://github.com/your-username/textila-client.git
+git clone https://github.com/your-username/textila-server.git
+```
+
+### Step 1: Clone the Repositories
+
+```bash
+git clone https://github.com/your-username/textila-client.git
+git clone https://github.com/your-username/textila-server.git
+```
+### Step 2: Install Dependencies
+
+#### Client Side
+
+```bash
+cd textila-client
+npm install
+```
+#### Server Side
+
+```bash
+cd textila-server
+npm install
+```
+### Step 3: Environment Variables Setup
+
+Create a `.env` file in both client and server directories.
+
+#### Client `.env`
+
+```bash
+VITE_apiKey=your_firebase_api_key
+VITE_authDomain=your_firebase_auth_domain
+VITE_projectId=your_firebase_project_id
+VITE_storageBucket=your_firebase_storage_bucket
+VITE_messagingSenderId=your_firebase_messaging_sender_id
+VITE_appId=your_firebase_app_id
+```
+
+#### Server `.env`
+
+```bash
+PORT=5000
+DB_USER=your_mongodb_user
+DB_PASS=your_mongodb_password
+FB_SERVICE_KEY=your_jwt_secret
+STRIPE_SECRET=your_stripe_secret_key
+SITE_DOMAIN=http://localhost:5173
+```
+
+### Step 4: Run the Project
+
+#### Start the Backend Server
+
+```bash
+cd textila-server
+npm run dev
+```
+
+#### Start the Frontend Client
+
+```bash
+cd textila-client
+npm run dev
+```
+### Step 5: Open in Browser
+
+```bash
+Open your browser and visit:
+http://localhost:5173
+```
