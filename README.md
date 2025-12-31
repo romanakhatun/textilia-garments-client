@@ -195,15 +195,8 @@ Make sure you have the following installed on your system:
 ### Step 1: Clone the Repositories
 
 ```bash
-git clone https://github.com/your-username/textila-client.git
-git clone https://github.com/your-username/textila-server.git
-```
-
-### Step 1: Clone the Repositories
-
-```bash
-git clone https://github.com/your-username/textila-client.git
-git clone https://github.com/your-username/textila-server.git
+git clone https://github.com/romanakhatun/textilia-garments-client.git
+git clone https://github.com/romanakhatun/textilia-garments-server.git
 ```
 ### Step 2: Install Dependencies
 
