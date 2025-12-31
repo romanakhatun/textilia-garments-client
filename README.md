@@ -154,7 +154,7 @@ This project was built as part of an **assignment to demonstrate full-stack deve
 
 ### Client Side
 
-- react-router-dom
+- react-router
 - @tanstack/react-query
 - react-hook-form
 - framer-motion
