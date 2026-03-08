@@ -154,7 +154,7 @@ const ApprovedOrders = () => {
           <small>${new Date(t.timestamp).toLocaleString()}</small><br/>
           ${t.location || ""} ${t.note ? "• " + t.note : ""}
         </div>
-      `
+      `,
       )
       .join("");
 
@@ -169,11 +169,11 @@ const ApprovedOrders = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">
+      <h2 className="text-3xl font-bold font-nunito mb-4">
         Approved Orders ({orders.length})
       </h2>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto  bg-base-100 rounded-xl shadow">
         <table className="table">
           <thead>
             <tr>

@@ -41,7 +41,7 @@ const ManageUsers = () => {
     await Swal.fire(
       "Approved!",
       `${user.displayName} is now approved.`,
-      "success"
+      "success",
     );
     refetch();
   };
@@ -64,7 +64,9 @@ const ManageUsers = () => {
   return (
     <div className="p-6 lg:p-10">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-        <h2 className="text-2xl font-bold">Manage Users ({users.length})</h2>
+        <h4 className="text-3xl font-bold font-nunito">
+          Manage Users ({users.length})
+        </h4>
 
         {/* SEARCH */}
         <div className="flex items-center gap-3 w-full md:w-auto">
@@ -77,7 +79,7 @@ const ManageUsers = () => {
         </div>
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto bg-base-100 rounded-xl shadow">
         <table className="table">
           <thead>
             <tr>
@@ -95,7 +97,7 @@ const ManageUsers = () => {
               .filter(
                 (u) =>
                   u.displayName?.toLowerCase().includes(searchText) ||
-                  u.email?.toLowerCase().includes(searchText)
+                  u.email?.toLowerCase().includes(searchText),
               )
               .map((user, index) => (
                 <tr key={user._id}>
@@ -128,8 +130,8 @@ const ManageUsers = () => {
                         user.status === "approved"
                           ? "badge-success"
                           : user.status === "suspended"
-                          ? "badge-error"
-                          : "badge-warning"
+                            ? "badge-error"
+                            : "badge-warning"
                       }`}
                     >
                       {user.status}

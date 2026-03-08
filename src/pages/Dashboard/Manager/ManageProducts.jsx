@@ -54,7 +54,7 @@ const ManageProducts = () => {
   return (
     <div className="p-6 lg:p-10">
       <div className="flex flex-col md:flex-row justify-between">
-        <h1 className="text-3xl font-bold mb-6">
+        <h1 className="text-3xl font-bold mb-6 font-nunito">
           Manage Products ({products.length})
         </h1>
         <input

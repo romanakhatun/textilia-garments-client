@@ -28,7 +28,7 @@ const BuyerOrders = () => {
       return Swal.fire(
         "Cannot cancel",
         "Only pending orders can be cancelled",
-        "info"
+        "info",
       );
     }
 
@@ -58,16 +58,18 @@ const BuyerOrders = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">My Orders ({orders.length})</h2>
+      <h4 className="text-3xl font-bold mb-4 font-nunito">
+        My Orders ({orders.length})
+      </h4>
 
       <div className="space-y-4">
         {orders.map((order) => (
           <div
             key={order._id}
-            className="p-4 border rounded-lg bg-base-100 flex flex-col md:flex-row justify-between gap-4"
+            className="p-4 border border-base-content/10 rounded-lg bg-base-100 flex flex-col md:flex-row justify-between gap-4"
           >
             <div>
-              <h3 className="font-semibold text-lg">{order.productName}</h3>
+              <h4 className="font-semibold text-xl">{order.productName}</h4>
               <p className="text-sm text-base-content/70">
                 Qty: {order.quantity} • Total: ${order.orderTotal}
               </p>
@@ -79,13 +81,13 @@ const BuyerOrders = () => {
 
             <div className="flex flex-col items-end gap-2">
               <span
-                className={`badge ${
+                className={`badge text-white ${
                   order.status === "pending"
                     ? "badge-warning"
                     : order.status === "cancelled" ||
-                      order.status === "rejected"
-                    ? "badge-error"
-                    : "badge-success"
+                        order.status === "rejected"
+                      ? "badge-error"
+                      : "badge-success"
                 }`}
               >
                 {order.status}
@@ -94,7 +96,7 @@ const BuyerOrders = () => {
               <div className="flex gap-2">
                 <Link
                   to={`/dashboard/track-order/${order._id}`}
-                  className="btn btn-sm"
+                  className="btn btn-sm border-0 shadow-none w-20"
                 >
                   Track
                 </Link>

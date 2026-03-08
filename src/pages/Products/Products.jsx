@@ -25,7 +25,7 @@ const AllProducts = () => {
   );
 
   return (
-    <section className="bg-[var(--body-bg)] min-h-screen transition-colors duration-500">
+    <section className="bg-(--body-bg) min-h-screen transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6 py-24">
         {/* --- Header Section with High Visibility Search --- */}
         <div className="flex flex-col lg:flex-row justify-between items-end gap-16 mb-24 border-b border-base-content/5 pb-16">
@@ -50,7 +50,7 @@ const AllProducts = () => {
             transition={{ delay: 0.5 }}
             className="w-full lg:w-[450px] group"
           >
-            <h4 className="text-[10px] font-bold uppercase tracking-[4px] mb-4 text-base-content/30 group-focus-within:text-primary transition-colors">
+            <h4 className="text-[10px] font-bold uppercase tracking-[4px] mb-4 text-primary transition-colors">
               Find in Catalogue
             </h4>
 
@@ -74,7 +74,7 @@ const AllProducts = () => {
         {/* --- Product Grid --- */}
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-28"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12"
         >
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product) => (
@@ -90,7 +90,7 @@ const AllProducts = () => {
             animate={{ opacity: 1 }}
             className="py-48 text-center"
           >
-            <div className="w-20 h-[1px] bg-base-content/10 mx-auto mb-8"></div>
+            <div className="w-20 h-px bg-base-content/10 mx-auto mb-8"></div>
             <h2 className="text-xs font-arsenal uppercase tracking-[8px] text-base-content/20 italic">
               — No matching pieces found —
             </h2>

@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import useRole from "../../../hooks/useRole";
 import LoadingSpinner from "../../../components/LoadingSpinner";
-import { MdLogout } from "react-icons/md";
+import { MdLogout, MdVerified } from "react-icons/md";
 
 const UserProfile = () => {
   const { user, updateUserProfile, signOutUser } = useAuth();
@@ -56,22 +56,34 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6 md:p-10 bg-base-100 rounded-xl shadow-xl my-10">
-      <h1 className="text-3xl font-arsenal font-extrabold mb-4 capitalize">
+    <div className="max-w-45l mx-auto p-6 md:p-10 bg-base-100 rounded-xl shadow-xl my-10">
+      <h4 className="text-3xl font-nunito font-extrabold mb-4 capitalize">
         {userData?.role || "My"} Profile
-      </h1>
+      </h4>
       <p className="mb-6 text-base-content/70">
         Manage your account details and status.
       </p>
 
       <div className="flex flex-col lg:flex-row gap-8 items-start">
-        <div className="flex flex-col items-center bg-base-200 p-6 rounded-xl w-full lg:w-1/3 border border-base-300">
-          <img
-            src={user?.photoURL}
-            alt="Profile"
-            className="w-32 h-32 rounded-full object-cover border-4 border-primary shadow-lg"
-          />
+        <div className="flex flex-col items-center bg-base-100 p-6 rounded-xl w-full lg:w-1/3 border border-base-300">
+          {/* Background Decoration */}
+          <div className="absolute top-0 left-0 w-full h-2 bg-primary"></div>
 
+          <div className="relative">
+            <img
+              src={
+                user?.photoURL ||
+                "https://i.ibb.co/mJR9Q3p/user-placeholder.png"
+              }
+              alt="Profile"
+              className="w-32 h-32 rounded-full object-cover ring-4 ring-primary/10 ring-offset-4 ring-offset-base-100 shadow-2xl transition-transform duration-500 group-hover:scale-105"
+            />
+            {userData?.status === "approved" && (
+              <div className="absolute bottom-1 right-1 bg-success text-white p-1 rounded-full border-4 border-base-100">
+                <MdVerified size={20} />
+              </div>
+            )}
+          </div>
           <h2 className="mt-4 text-xl font-arsenal font-semibold">
             {user?.displayName}
           </h2>
@@ -91,8 +103,8 @@ const UserProfile = () => {
                   userData.status === "approved"
                     ? "badge-success"
                     : userData.status === "suspended"
-                    ? "badge-error"
-                    : "badge-warning"
+                      ? "badge-error"
+                      : "badge-warning"
                 } text-white font-bold capitalize`}
               >
                 Status: {userData.status || "pending"}
@@ -104,10 +116,6 @@ const UserProfile = () => {
                 <p className="capitalize">{userData.suspendReason}</p>
               </div>
             )}
-            <button onClick={() => signOutUser()} className="btn-primary mt-4">
-              <MdLogout size={22} />
-              <>Logout</>
-            </button>
           </div>
         </div>
 

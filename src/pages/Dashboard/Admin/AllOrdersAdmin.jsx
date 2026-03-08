@@ -46,7 +46,7 @@ const AllOrdersAdmin = () => {
           <small>${new Date(t.timestamp).toLocaleString()}</small><br/>
           ${t?.location || ""} ${t.note ? "• " + t.note : ""}
         </div>
-      `
+      `,
       )
       .join("");
 
@@ -76,7 +76,7 @@ const AllOrdersAdmin = () => {
     <div className="p-6 lg:p-10">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold">All Orders (Admin)</h1>
+          <h4 className="text-3xl font-bold font-nunito">All Orders (Admin)</h4>
           <p className="text-sm text-base-content/70">
             Manage and track all orders
           </p>
@@ -106,7 +106,7 @@ const AllOrdersAdmin = () => {
         </div>
       </div>
 
-      <div className="overflow-x-auto bg-base-100 rounded-xl shadow">
+      <div className="overflow-x-auto bg-base-100 rounded-xl shadow font-nunito">
         <table className="table w-full">
           <thead>
             <tr>
@@ -145,8 +145,8 @@ const AllOrdersAdmin = () => {
                       o.status === "approved"
                         ? "badge-success"
                         : o.status === "rejected"
-                        ? "badge-error"
-                        : "badge-info"
+                          ? "badge-error"
+                          : "badge-info"
                     }`}
                   >
                     {o.status}

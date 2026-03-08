@@ -60,12 +60,12 @@ const PendingOrders = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">
+      <h4 className="text-3xl font-bold font-nunito mb-4">
         Pending Orders ({orders.length})
-      </h2>
+      </h4>
 
-      <div className="overflow-x-auto">
-        <table className="table table-zebra">
+      <div className="overflow-x-auto bg-base-100 rounded-xl shadow">
+        <table className="table">
           {/* TABLE HEAD */}
           <thead>
             <tr>

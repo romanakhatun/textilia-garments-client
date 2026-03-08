@@ -59,7 +59,7 @@ const AllProductsAdmin = () => {
   const filtered = products.filter(
     (p) =>
       p.name.toLowerCase().includes(search.toLowerCase()) ||
-      p.category?.toLowerCase().includes(search.toLowerCase())
+      p.category?.toLowerCase().includes(search.toLowerCase()),
   );
 
   const totalPages = Math.ceil(filtered.length / itemsPerPage);
@@ -71,7 +71,9 @@ const AllProductsAdmin = () => {
     <div className="p-6 lg:p-10">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold">All Products (Admin)</h1>
+          <h4 className="text-3xl font-bold font-nunito">
+            All Products (Admin)
+          </h4>
           <p className="text-sm text-base-content/70">
             Manage products in the system
           </p>
