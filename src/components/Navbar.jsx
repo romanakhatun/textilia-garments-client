@@ -90,7 +90,6 @@ const Navbar = () => {
                       to="/register"
                       className="bg-primary text-primary-content px-5 md:px-7 py-2.5 md:py-3 text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] hover:opacity-90 transition-all shadow-sm active:scale-95"
                     >
-                      {/* bg-[#2D2D2D] bad diye bg-primary kora hoyeche jate light/dark e auto change hoy */}
                       Register
                     </Link>
                   </div>
@@ -102,7 +101,7 @@ const Navbar = () => {
           </div>
 
           {/* MOBILE DRAWER */}
-          <div className="drawer-side z-[60]">
+          <div className="drawer-side z-60">
             <label
               htmlFor={drawerId}
               className="drawer-overlay bg-black/30 backdrop-blur-sm"

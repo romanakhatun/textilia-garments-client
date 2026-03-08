@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router";
@@ -8,20 +9,18 @@ const SocialLogin = () => {
   const axiosSecure = useAxiosSecure();
   const location = useLocation();
   const navigate = useNavigate();
-  // console.log("location in social", location);
 
   const handleGoogleSignIn = () => {
     signInGoogleUser()
       .then((result) => {
-        // create user in the database
         const userInfo = {
           email: result.user.email,
           displayName: result.user.displayName,
           photoURL: result.user.photoURL,
+          role: "buyer", // Default role set kora holo jate database error na hoy
         };
 
         axiosSecure.post("/users", userInfo).then((res) => {
-          console.log("user data has been stored", res.data);
           navigate(location.state || "/");
         });
       })
@@ -31,10 +30,10 @@ const SocialLogin = () => {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <button
         onClick={handleGoogleSignIn}
-        className="btn text-gray-600 w-full flex items-center justify-center bg-[#E9ECF1]"
+        className="btn w-full h-14 flex items-center justify-center gap-3 bg-base-200/50 hover:bg-base-200 border border-base-content/10 rounded-none shadow-none text-base-content font-medium uppercase tracking-[2px] text-[10px] transition-all duration-300 active:scale-[0.98]"
       >
         <span className="text-xl">
           <FcGoogle />

@@ -45,8 +45,7 @@ const Banner = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            // bg-[#F9F8F6] bad diye var(--body-bg) kora hoyeche
-            className="w-full md:w-[70%] lg:w-[60%] xl:w-[50%] lg:min-h-screen bg-[var(--body-bg)] p-6 md:p-12 xl:p-15 shadow-xl md:shadow-none flex flex-col justify-center mx-auto md:mx-0 mt-16 md:mt-0 transition-colors duration-300"
+            className="w-full md:w-[70%] lg:w-[60%] xl:w-[50%] lg:min-h-screen bg-(--body-bg) p-6 md:p-12 xl:p-15 shadow-xl md:shadow-none flex flex-col justify-center mx-auto md:mx-0 mt-16 md:mt-0 transition-colors duration-300"
           >
             <motion.p
               variants={itemVariants}
@@ -57,7 +56,6 @@ const Banner = () => {
 
             <motion.h1
               variants={itemVariants}
-              // text-[#2D2D2D] bad diye text-base-content
               className="text-3xl md:text-5xl lg:text-7xl font-arsenal font-light leading-[1.2] md:leading-[1.1] text-base-content"
             >
               Style in Every <br />
@@ -68,7 +66,6 @@ const Banner = () => {
             {/* Descriptive Text */}
             <motion.p
               variants={itemVariants}
-              // text-[#666666] bad diye text-base-content with opacity
               className="mt-6 text-sm md:text-base text-base-content/80 leading-relaxed max-w-sm"
             >
               The Garments Order & Production Tracker simplifies managing
@@ -81,7 +78,6 @@ const Banner = () => {
               className="flex flex-wrap items-center gap-6 md:gap-10 mt-8 md:mt-12"
             >
               <Link to="/all-products">
-                {/* btn-primary class use kora hoyeche jate global CSS theke style nibe */}
                 <button className="btn-primary px-8 md:px-10 h-[50px] md:h-[55px] hover:opacity-90 transition-all">
                   Get Started
                 </button>
@@ -90,8 +86,7 @@ const Banner = () => {
               {/* Play Button Group */}
               <div className="flex items-center gap-4 cursor-pointer group">
                 <div className="relative flex items-center justify-center">
-                  <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full border border-base-content/20 bg-[var(--body-bg)] flex items-center justify-center z-10 transition-colors duration-300">
-                    {/* Icon color dynamic */}
+                  <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full border border-base-content/20 bg-(--body-bg) flex items-center justify-center z-10 transition-colors duration-300">
                     <FaPlay className="text-[8px] md:text-[10px] ml-1 text-base-content/60" />
                   </div>
                 </div>

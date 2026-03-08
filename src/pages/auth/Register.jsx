@@ -19,28 +19,20 @@ const Register = () => {
   const axiosSecure = useAxiosSecure();
 
   const handleRegister = (data) => {
-    // console.log(data);
-    // console.log("after register", data.photo[0]);
     const profileImg = data.photo[0];
 
     registerUser(data.email, data.password)
       .then(() => {
-        // console.log(result.user);
-        // 1. store the image in form data
         const formData = new FormData();
         formData.append("image", profileImg);
 
-        // 2. send the photo to store and get the ul
         const image_API_URL = `https://api.imgbb.com/1/upload?key=${
           import.meta.env.VITE_image_host_key
         }`;
 
         axios.post(image_API_URL, formData).then((res) => {
-          // console.log("after image upload", res.data.data.url);
-
           const photoURL = res.data.data.url;
 
-          // create user in the database
           const userInfo = {
             email: data.email,
             displayName: data.name,
@@ -54,7 +46,6 @@ const Register = () => {
             }
           });
 
-          // update user profile to firebase
           const userProfile = {
             displayName: data.name,
             photoURL: photoURL,
@@ -62,7 +53,7 @@ const Register = () => {
 
           updateUserProfile(userProfile)
             .then(() => {
-              showSuccess("Login Successful");
+              showSuccess("Registration Successful");
               navigate(location?.state || "/");
             })
             .catch((err) => showError(err.message || "Registration Failed"));
@@ -75,137 +66,141 @@ const Register = () => {
 
   return (
     <>
-      <h2 className="text-3xl font-extrabold mb-2 mt-4 text-black">
+      <h2 className="text-3xl font-extrabold mb-1 mt-4 text-base-content font-arsenal">
         Create an Account
       </h2>
-      <p className="text-base text-black mb-5">Register with Textilia</p>
+      <p className="text-sm text-base-content/60 mb-6 uppercase tracking-widest">
+        Join with Textilia
+      </p>
 
-      {/* Login Form */}
-      <form className="space-y-3" onSubmit={handleSubmit(handleRegister)}>
+      <form className="space-y-4" onSubmit={handleSubmit(handleRegister)}>
         <AlertMessage type="error" message={error} />
         <AlertMessage type="success" message={success} />
 
-        {/* Name Input */}
-        <div>
-          <label className="form-control w-full">
-            <div className="label">
-              <span className="label-text text-base font-medium text-gray-700">
-                Name <span className="text-red-700">*</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Name Input */}
+          <label className="form-control w-full group">
+            <div className="label py-1">
+              <span className="label-text text-[10px] font-bold uppercase tracking-[2px] text-base-content/50">
+                Full Name <span className="text-error">*</span>
               </span>
             </div>
             <input
               type="text"
               {...register("name", { required: true })}
-              placeholder="Name"
-              className="input input-bordered w-full bg-white"
+              placeholder="YOUR NAME"
+              className="input border border-base-content/20 rounded-none h-14 w-full bg-base-100 text-base-content focus:border-primary focus:outline-none transition-all placeholder:text-base-content/20 text-xs px-5 "
             />
             {errors.name && (
-              <span className="text-red-700">Name is required</span>
+              <span className="text-error text-[10px] mt-1 font-bold italic lowercase tracking-tight">
+                * Name is required
+              </span>
             )}
           </label>
-        </div>
 
-        {/* Photo Input */}
-        <div>
-          <label className="form-control w-full">
-            <div className="label">
-              <span className="label-text text-base font-medium text-gray-700">
-                Photo <span className="text-red-700">*</span>
+          {/* Photo Input */}
+          <label className="form-control w-full group">
+            <div className="label py-1">
+              <span className="label-text text-[10px] font-bold uppercase tracking-[2px] text-base-content/50">
+                Profile Photo <span className="text-error">*</span>
               </span>
             </div>
             <input
               type="file"
               {...register("photo", { required: true })}
-              placeholder="Name"
-              className="file-input input-bordered w-full bg-white"
+              className="file-input file-input-bordered rounded-none h-14 w-full bg-base-100 text-base-content focus:outline-none text-xs"
             />
-            {errors.email?.type === "required" && (
-              <span className="text-red-700">Photo is required</span>
+            {errors.photo && (
+              <span className="text-error text-[10px] mt-1 font-bold italic lowercase tracking-tight">
+                * Photo is required
+              </span>
             )}
           </label>
         </div>
 
         {/* Email Input */}
-        <div>
-          <label className="form-control w-full">
-            <div className="label">
-              <span className="label-text text-base font-medium text-gray-700">
-                Email <span className="text-red-700">*</span>
-              </span>
-            </div>
-            <input
-              type="email"
-              {...register("email", { required: true })}
-              placeholder="Email"
-              className="input input-bordered w-full bg-white"
-            />
-            {errors.email?.type === "required" && (
-              <span className="text-red-700">Email is required</span>
-            )}
-          </label>
-        </div>
+        <label className="form-control w-full group">
+          <div className="label py-1">
+            <span className="label-text text-[10px] font-bold uppercase tracking-[2px] text-base-content/50">
+              Email Address <span className="text-error">*</span>
+            </span>
+          </div>
+          <input
+            type="email"
+            {...register("email", { required: true })}
+            placeholder="MAIL@EXAMPLE.COM"
+            className="input border border-base-content/20 rounded-none h-14 w-full bg-base-100 text-base-content focus:border-primary focus:outline-none transition-all placeholder:text-base-content/20 text-xs px-5 "
+          />
+          {errors.email && (
+            <span className="text-error text-[10px] mt-1 font-bold italic lowercase tracking-tight">
+              * Email is required
+            </span>
+          )}
+        </label>
 
-        {/* Password Input */}
-        <div>
-          <label className="form-control w-full">
-            <div className="label">
-              <span className="label-text text-base font-medium text-gray-700">
-                Password <span className="text-red-700">*</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          {/* Password Input */}
+          <label className="form-control w-full group">
+            <div className="label py-1">
+              <span className="label-text text-[10px] font-bold uppercase tracking-[2px] text-base-content/50">
+                Secure Password <span className="text-error">*</span>
               </span>
             </div>
             <input
-              type="text"
+              type="password"
               {...register("password", { required: true, minLength: 6 })}
-              placeholder="Password"
-              className="input input-bordered w-full bg-white"
+              placeholder="••••••••"
+              className="input border border-base-content/20 rounded-none h-14 w-full bg-base-100 text-base-content focus:border-primary focus:outline-none transition-all placeholder:text-base-content/20 text-xs px-5 "
             />
-            {errors.password?.type === "required" && (
-              <span className="text-red-700">Password field is required</span>
-            )}
-            {errors.password?.type === "minLength" && (
-              <span className="text-red-700">Password Must be 6 character</span>
+            {errors.password && (
+              <span className="text-error text-[10px] mt-1 font-bold italic lowercase tracking-tight">
+                * Min 6 chars required
+              </span>
             )}
           </label>
-        </div>
 
-        {/* Role Input */}
-        <div>
-          <label className="form-control w-full">
-            <div className="label">
-              <span className="label-text text-base font-medium text-gray-700">
-                Select Role <span className="text-red-700">*</span>
+          {/* Role Input */}
+          <label className="form-control w-full group">
+            <div className="label py-1">
+              <span className="label-text text-[10px] font-bold uppercase tracking-[2px] text-base-content/50">
+                Choose Role <span className="text-error">*</span>
               </span>
             </div>
-
             <select
               {...register("role", { required: true })}
-              className="select select-bordered w-full bg-white"
+              className="select select-bordered rounded-none h-14 w-full bg-base-100 text-base-content focus:outline-none text-xs px-5 tracking-[1px]"
             >
-              <option value="buyer">Buyer</option>
-              <option value="manager">Manager</option>
+              <option value="buyer">BUYER</option>
+              <option value="manager">MANAGER</option>
             </select>
-
             {errors.role && (
-              <span className="text-red-700">Role selection is required</span>
+              <span className="text-error text-[10px] mt-1 font-bold italic lowercase tracking-tight">
+                * Role is required
+              </span>
             )}
           </label>
         </div>
 
-        {/* Login Button */}
-        <button type="submit" className="btn-primary w-full mt-5">
-          Register
+        {/* Register Button */}
+        <button
+          type="submit"
+          className="btn-primary w-full h-14 mt-4 rounded-none text-xs tracking-[3px]"
+        >
+          Create Account
         </button>
       </form>
 
-      <div className="divider text-gray-400 my-6">Or</div>
+      <div className="divider opacity-20 my-6 text-[10px] uppercase tracking-widest">
+        Or
+      </div>
 
       <div className="flex justify-center mb-3">
-        <p className="text-sm text-gray-600">
-          Don't have any account?{" "}
+        <p className="text-xs text-base-content/60 tracking-wide">
+          Already have an account?{" "}
           <Link
             to="/login"
             state={location?.state}
-            className="link link-hover text-sm text-[#8FA748] hover:text-lime-600 font-medium"
+            className="text-secondary font-bold hover:underline ml-1 uppercase"
           >
             Login
           </Link>

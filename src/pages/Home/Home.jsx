@@ -5,6 +5,7 @@ import Process from "./Process";
 import CustomerFeedback from "./CustomerFeedback";
 import HomeProducts from "./HomeProducts";
 import Brands from "./Brands";
+import MissionSection from "../../components/MissionSection";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -25,6 +26,7 @@ const Home = () => {
         animate="visible"
       >
         <Banner />
+        <MissionSection />
         <HomeProducts />
         <Brands />
         <Process />
