@@ -6,6 +6,7 @@ import CustomerFeedback from "./CustomerFeedback";
 import HomeProducts from "./HomeProducts";
 import Brands from "./Brands";
 import MissionSection from "../../components/MissionSection";
+import PricingSection from "../../components/PricingSection";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -30,6 +31,7 @@ const Home = () => {
         <HomeProducts />
         <Brands />
         <Process />
+        <PricingSection />
         <hr className="border-t border-base-300" />
         <CustomerFeedback />
       </motion.div>

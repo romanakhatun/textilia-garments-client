@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const MissionSection = () => {
   return (
-    <section className="bg-(--body-bg) py-20 md:py-32 px-4 transition-colors duration-300">
+    <section className="bg-(--body-bg) pt-20 md:pt-34 px-4 transition-colors duration-300">
       <div className="max-w-5xl mx-auto text-center">
         {/* Title with Highlight */}
         <motion.div

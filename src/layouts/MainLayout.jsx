@@ -12,7 +12,7 @@ const MainLayout = () => {
       <div className="pb-10 md:pb-20">
         <Navbar />
       </div>
-      <main className="flex-grow">
+      <main className="grow">
         <Suspense fallback={<LoadingSpinner />}>
           <Outlet />
         </Suspense>
