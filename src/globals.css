@@ -53,9 +53,18 @@
   --color-error: #ff6655;
 }
 
+:root {
+  --body-bg: #f9f8f6;
+}
+
+[data-theme="dark"] {
+  --body-bg: #1d1d1d;
+}
+
 body {
   font-family: "Nunito", sans-serif;
   color: #2c2b2b;
+  background-color: var(--body-bg);
 }
 
 h1,

@@ -8,11 +8,11 @@ import Navbar from "../components/Navbar";
 
 const MainLayout = () => {
   return (
-    <div>
-      <div className="pb-28">
+    <div className="flex flex-col min-h-screen">
+      <div className="pb-10 md:pb-20">
         <Navbar />
       </div>
-      <main className="min-h-screen">
+      <main className="flex-grow">
         <Suspense fallback={<LoadingSpinner />}>
           <Outlet />
         </Suspense>
